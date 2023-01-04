@@ -26,13 +26,16 @@ const Characters = () => {
         setCharacters(result)
     }
 
+    let charDisplay = characters.map((char, index) => {
+        return <CharCard char={char} />
+    })
+
+    console.log(charDisplay)
     return (
         <main>
           <CharSearchForm charSearch={charSearch}/>
             <div className="char-cards-container">
-                {characters.map((char, index) => {
-                    return <CharCard char={char} />
-                })}
+                {charDisplay}
             </div>
         </main>
     )
