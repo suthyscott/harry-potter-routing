@@ -1,0 +1,15 @@
+.char-card {
+    border: solid black 2px;
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.char-card img {
+    object-fit: cover;
+    height: 70%;
+    width: 90%;
+}
