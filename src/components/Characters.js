@@ -1,4 +1,3 @@
-import React from "react"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import CharCard from "./CharCard"
@@ -7,6 +6,7 @@ import CharSearchForm from "./CharSearchForm"
 
 const Characters = () => {
     const [characters, setCharacters] = useState([])
+    const [searchInput, setSearchInput] = useState("")
 
     const getChars = () => {
         axios
@@ -17,23 +17,27 @@ const Characters = () => {
 
     useEffect(getChars, [])
 
-    const charSearch = searchTerm => {
-        const result = characters.filter(char => {
-            if (char.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                return char
-            }
-        })
-        setCharacters(result)
-    }
+    // const charSearch = searchTerm => {
+    //     const result = characters.filter(char => {
+    //         if (char.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+    //             return char
+    //         }
+    //     })
+    //     setCharacters(result)
+    // }
 
-    let charDisplay = characters.map((char, index) => {
+    let charDisplay = characters.filter(char => {
+        if (char.name.toLowerCase().includes(searchInput.toLowerCase())) {
+            return char
+        }
+    }).map((char, index) => {
         return <CharCard char={char} />
     })
 
     console.log(charDisplay)
     return (
         <main>
-          <CharSearchForm charSearch={charSearch}/>
+          <CharSearchForm setSearchInput={setSearchInput} searchInput={searchInput}/>
             <div className="char-cards-container">
                 {charDisplay}
             </div>
