@@ -17,14 +17,6 @@ const Characters = () => {
 
     useEffect(getChars, [])
 
-    // const charSearch = searchTerm => {
-    //     const result = characters.filter(char => {
-    //         if (char.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-    //             return char
-    //         }
-    //     })
-    //     setCharacters(result)
-    // }
 
     let charDisplay = characters.filter(char => {
         if (char.name.toLowerCase().includes(searchInput.toLowerCase())) {
